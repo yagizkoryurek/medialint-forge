@@ -1,0 +1,16 @@
+node_modules/
+dist/
+coverage/
+.DS_Store
+*.log
+
+# Self-hosted ffmpeg cores are copied from node_modules at build time (pnpm cores)
+apps/web/public/ffmpeg/
+
+# Playwright
+test-results/
+playwright-report/
+blob-report/
+
+# Temporary fixture build artifacts (committed outputs live in fixtures/media + fixtures/probes)
+fixtures/tmp/

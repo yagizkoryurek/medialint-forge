@@ -1,0 +1,31 @@
+{
+  "name": "medialint-forge",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Local-first media diagnostic and repair: analyze, explain, fix, verify, download — all in your browser.",
+  "license": "MIT",
+  "type": "module",
+  "packageManager": "pnpm@11.17.0",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "dev": "pnpm --filter @medialint/web dev",
+    "build": "pnpm --filter @medialint/web build",
+    "preview": "pnpm --filter @medialint/web preview",
+    "typecheck": "pnpm -r --parallel typecheck",
+    "lint": "biome check .",
+    "format": "biome format --write .",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "e2e": "playwright test",
+    "fixtures": "bash fixtures/generate.sh",
+    "cores": "node scripts/copy-cores.mjs"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^2.5.13",
+    "@playwright/test": "^1.63.0",
+    "typescript": "^5.9.0",
+    "vitest": "^5.0.0"
+  }
+}

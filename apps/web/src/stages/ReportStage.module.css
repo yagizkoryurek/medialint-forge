@@ -1,0 +1,10 @@
+.clean {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  border-left: 4px solid var(--ok);
+}
+
+.clean p {
+  margin: 0;
+}

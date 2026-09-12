@@ -1,0 +1,25 @@
+export const CORE_VERSION = '0.1.0';
+
+export { ALL_CHECKS, getCheck, runChecks } from './checks/registry';
+export type { Estimate } from './estimate';
+export { estimate } from './estimate';
+export { codecName, en, formatName, humanBytes } from './explain/en';
+export type { Quality } from './fixes/argv';
+export { CRF_BY_QUALITY, formatCommand } from './fixes/argv';
+export type { CheckId, FixId } from './fixes/ids';
+export { CHECK, FIX } from './fixes/ids';
+export type { ImageFormat } from './fixes/image';
+export { IMAGE_FORMAT_OPTIONS, resizedDims } from './fixes/image';
+export { outputName } from './fixes/naming';
+export type { AnyFix, FixOffer } from './fixes/registry';
+export { ALL_FIXES, fixOffers, getFix, planFix } from './fixes/registry';
+export { MP4_AUDIO_CODECS, MP4_VIDEO_CODECS, mp4CanCarry } from './media/codecs';
+export type { FfprobeJson, FfprobeStream } from './normalize/fromFfprobe';
+export { fromFfprobe, parseRate, rotationOf } from './normalize/fromFfprobe';
+export { fromImageProbe } from './normalize/fromImageProbe';
+export { extractMetadata, parseIso6709 } from './normalize/metadata';
+export { getProfile, PROFILES, webBrowsers } from './profiles/web-browsers';
+export { extMatchesFormat, extOf, sniff } from './sniff/magic';
+export { scanMp4Boxes } from './sniff/mp4boxes';
+export * from './types';
+export { sanityChecks, verify } from './verify';

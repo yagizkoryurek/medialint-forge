@@ -1,0 +1,170 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`argv snapshots > gps.mov → strip-metadata 1`] = `
+{
+  "cmd": "ffmpeg -nostdin -y -hide_banner -i /input/gps.mov -map 0:v:0 -map 0:a:0? -dn -sn -map_metadata -1 -map_metadata:s:v -1 -map_metadata:s:a -1 -map_chapters -1 -fflags +bitexact -c copy -movflags +faststart -max_muxing_queue_size 1024 /out/gps.nometa.mov",
+  "expected": {
+    "dims": {
+      "height": 180,
+      "width": 320,
+    },
+    "durationDeltaSec": 0,
+    "resolves": [
+      "metadata-gps",
+      "metadata-device",
+    ],
+    "streams": {
+      "audio": 1,
+      "video": 1,
+    },
+  },
+  "outputName": "gps.nometa.mov",
+}
+`;
+
+exports[`argv snapshots > h264.mkv → remux-mp4 1`] = `
+{
+  "cmd": "ffmpeg -nostdin -y -hide_banner -i /input/h264.mkv -map 0:v:0 -map 0:a:0? -dn -sn -c copy -movflags +faststart -max_muxing_queue_size 1024 /out/h264.fixed.mp4",
+  "expected": {
+    "dims": {
+      "height": 180,
+      "width": 320,
+    },
+    "durationDeltaSec": 0,
+    "resolves": [
+      "container-not-mp4",
+      "mp4-not-faststart",
+      "ext-mismatch",
+    ],
+    "streams": {
+      "audio": 1,
+      "video": 1,
+    },
+  },
+  "outputName": "h264.fixed.mp4",
+}
+`;
+
+exports[`argv snapshots > hevc.mov → transcode-h264-aac 1`] = `
+{
+  "cmd": "ffmpeg -nostdin -y -hide_banner -i /input/hevc.mov -map 0:v:0 -map 0:a:0? -dn -sn -vf 'scale=trunc(iw/2)*2:trunc(ih/2)*2' -pix_fmt yuv420p -c:v libx264 -preset veryfast -crf 23 -c:a copy -movflags +faststart -max_muxing_queue_size 1024 /out/hevc.fixed.mp4",
+  "expected": {
+    "dims": {
+      "height": 180,
+      "width": 320,
+    },
+    "durationDeltaSec": 0,
+    "resolves": [
+      "video-codec-unsupported",
+      "pixfmt-not-yuv420p",
+      "odd-dimensions",
+      "container-not-mp4",
+      "mp4-not-faststart",
+      "rotation-metadata",
+      "ext-mismatch",
+      "file-size-large",
+    ],
+    "streams": {
+      "audio": 1,
+      "video": 1,
+    },
+  },
+  "outputName": "hevc.fixed.mp4",
+}
+`;
+
+exports[`argv snapshots > not-faststart.mp4 → faststart 1`] = `
+{
+  "cmd": "ffmpeg -nostdin -y -hide_banner -i /input/not-faststart.mp4 -map 0:v:0 -map 0:a:0? -dn -sn -c copy -movflags +faststart -max_muxing_queue_size 1024 /out/not-faststart.faststart.mp4",
+  "expected": {
+    "dims": {
+      "height": 180,
+      "width": 320,
+    },
+    "durationDeltaSec": 0,
+    "resolves": [
+      "mp4-not-faststart",
+    ],
+    "streams": {
+      "audio": 1,
+      "video": 1,
+    },
+  },
+  "outputName": "not-faststart.faststart.mp4",
+}
+`;
+
+exports[`argv snapshots > pcm-audio.mov → audio-to-aac 1`] = `
+{
+  "cmd": "ffmpeg -nostdin -y -hide_banner -i /input/pcm-audio.mov -map 0:v:0 -map 0:a:0? -dn -sn -c:v copy -c:a aac -b:a 128k -ac 2 -movflags +faststart -max_muxing_queue_size 1024 /out/pcm-audio.fixed.mp4",
+  "expected": {
+    "dims": {
+      "height": 90,
+      "width": 160,
+    },
+    "durationDeltaSec": 0,
+    "resolves": [
+      "audio-codec-unsupported",
+      "container-not-mp4",
+      "mp4-not-faststart",
+    ],
+    "streams": {
+      "audio": 1,
+      "video": 1,
+    },
+  },
+  "outputName": "pcm-audio.fixed.mp4",
+}
+`;
+
+exports[`argv snapshots > pcm-audio.mov → transcode-h264-aac 1`] = `
+{
+  "cmd": "ffmpeg -nostdin -y -hide_banner -i /input/pcm-audio.mov -map 0:v:0 -map 0:a:0? -dn -sn -vf 'scale=trunc(iw/2)*2:trunc(ih/2)*2' -pix_fmt yuv420p -c:v libx264 -preset veryfast -crf 23 -c:a aac -b:a 128k -ac 2 -movflags +faststart -max_muxing_queue_size 1024 /out/pcm-audio.fixed.mp4",
+  "expected": {
+    "dims": {
+      "height": 90,
+      "width": 160,
+    },
+    "durationDeltaSec": 0,
+    "resolves": [
+      "video-codec-unsupported",
+      "pixfmt-not-yuv420p",
+      "odd-dimensions",
+      "container-not-mp4",
+      "mp4-not-faststart",
+      "rotation-metadata",
+      "ext-mismatch",
+      "audio-codec-unsupported",
+      "file-size-large",
+    ],
+    "streams": {
+      "audio": 1,
+      "video": 1,
+    },
+  },
+  "outputName": "pcm-audio.fixed.mp4",
+}
+`;
+
+exports[`argv snapshots > rotated.mp4 → apply-rotation 1`] = `
+{
+  "cmd": "ffmpeg -nostdin -y -hide_banner -i /input/rotated.mp4 -map 0:v:0 -map 0:a:0? -dn -sn -vf 'scale=trunc(iw/2)*2:trunc(ih/2)*2' -pix_fmt yuv420p -c:v libx264 -preset veryfast -crf 20 -c:a copy -movflags +faststart -max_muxing_queue_size 1024 /out/rotated.rotated.mp4",
+  "expected": {
+    "dims": {
+      "height": 320,
+      "width": 180,
+    },
+    "durationDeltaSec": 0,
+    "resolves": [
+      "rotation-metadata",
+      "container-not-mp4",
+      "mp4-not-faststart",
+    ],
+    "streams": {
+      "audio": 1,
+      "video": 1,
+    },
+  },
+  "outputName": "rotated.rotated.mp4",
+}
+`;

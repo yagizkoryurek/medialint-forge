@@ -1,0 +1,67 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`fromFfprobe (fixtures) > matches snapshot for a representative report (minus raw) 1`] = `
+{
+  "audio": [
+    {
+      "bitrate": 64697,
+      "channels": 1,
+      "codec": "aac",
+      "sampleRate": 48000,
+    },
+  ],
+  "container": {
+    "bitrate": 237484,
+    "durationSec": 2,
+    "formatName": "mov,mp4,m4a,3gp,3g2,mj2",
+  },
+  "ext": "mov",
+  "fileName": "hevc.mov",
+  "image": null,
+  "kind": "video",
+  "metadata": {
+    "creationTime": null,
+    "gps": null,
+    "make": null,
+    "model": null,
+    "software": null,
+    "tags": {
+      "compatible_brands": "qt  ",
+      "major_brand": "qt  ",
+      "minor_version": "512",
+      "stream0.encoder": "Lavc libx265",
+      "stream0.handler_name": "VideoHandler",
+      "stream0.vendor_id": "FFMP",
+      "stream1.handler_name": "SoundHandler",
+      "stream1.vendor_id": "[0][0][0][0]",
+    },
+  },
+  "sizeBytes": 59371,
+  "sniff": {
+    "brand": "qt  ",
+    "extMatches": true,
+    "fastStart": false,
+    "format": "mov",
+  },
+  "streamCounts": {
+    "audio": 1,
+    "other": 0,
+    "subtitle": 0,
+    "video": 1,
+  },
+  "video": {
+    "bitDepth": 8,
+    "bitrate": 147644,
+    "codec": "hevc",
+    "colorTransfer": null,
+    "fpsAvg": 30,
+    "fpsR": 30,
+    "height": 180,
+    "isVFR": false,
+    "pixFmt": "yuv420p",
+    "profile": "Main",
+    "rotation": 0,
+    "width": 320,
+  },
+}
+`;
